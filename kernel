@@ -1,0 +1,15 @@
+Debian12搭建内核开发调试环境
+
+1. 安装必要的编译工具
+sudo apt install -y g++ make gdb libncurses-dev flex bison libssl-dev libelf-dev bc
+
+2. 安装qemu，根据CPU架构选择不同的安装，此处安装x86
+sudo apt install -y qemu-system-x86
+
+3. 安装vscode
+略
+
+4. 下载内核代码并解压
+略
+
+5. 配置vscode
