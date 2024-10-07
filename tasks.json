@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Kernel",
+            "type": "shell",
+            "command": "qemu-system-x86_64 -s -S -kernel arch/x86/boot/bzImage -initrd ramdisk.img -nographic -m 512M -append 'console=ttyS0'",
+            // "command": "qemu-system-x86_64 -s -S -kernel ~/linux-5.3.7/arch/x86/boot/bzImage -initrd ~/busybox-1.31.0/initramfs.cpio.gz -nographic -append 'console=ttyS0' -serial mon:stdio -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true,
+                "group": "Kernel"
+            },
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^([^\\\\s].*)\\\\((\\\\d+,\\\\d+)\\\\):\\\\s*(.*)$",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": "."
+                    }
+                }
+            ]
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+                "group": "build"
+            }
+        }
+    ]
+}
