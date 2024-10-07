@@ -1,2 +1,2 @@
 # tmp file
-settings.zip  CLion settings file
+some config file
