@@ -18,5 +18,9 @@ sudo apt install -y qemu-system-x86
 5. 配置vscode
 略
 
-6. 启动内核需要添加下面这个参数，所须文件在本项目中，在Ubuntu中可使用mkinitramfs -o ramdisk.img命令生成该文件
--initrd ramdisk.img
+6. 在Ubuntu中可使用下面这两条命令生成ramdisk.img文件，openSUSE中没有相应的命令
+sudo apt install initramfs-tools
+mkinitramfs -o ramdisk.img
+
+7. 启动内核命令
+qemu-system-x86_64 -s -S -kernel arch/x86/boot/bzImage -initrd ramdisk.img -nographic -append "console=ttyS0"
