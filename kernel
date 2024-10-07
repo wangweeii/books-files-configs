@@ -1,7 +1,10 @@
-Debian12搭建内核开发调试环境
+openSUSE Tumbleweed搭建内核开发调试环境
 
 1. 安装必要的编译工具
-sudo apt install -y g++ make gdb libncurses-dev flex bison libssl-dev libelf-dev bc
+sudo zypper in xz make cmake gcc-c++ gdb git flex bc bison qemu ncurses-devel libelf-devel libopenssl-devel
+   在wsl中想要运行图形界面程序还需要安装以下三个包
+sudo zypper in xeyes
+sudo zypper in -t pattern wsl_systemd wsl_gui
 
 2. 安装qemu，根据CPU架构选择不同的安装，此处安装x86
 sudo apt install -y qemu-system-x86
@@ -13,3 +16,7 @@ sudo apt install -y qemu-system-x86
 略
 
 5. 配置vscode
+略
+
+6. 启动内核需要添加下面这个参数，所须文件在本项目中，在Ubuntu中可使用mkinitramfs -o ramdisk.img命令生成该文件
+-initrd ramdisk.img
